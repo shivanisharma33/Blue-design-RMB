@@ -103,11 +103,11 @@ const Navbar = () => {
               {/* MENU LINKS */}
               <nav className="flex-1 flex flex-col justify-center items-center gap-8">
                 {[
-                  { label: "Buy", path: "/listings" },
+                  { label: "Buy", path: "pages/Listings" },
                   { label: "Sold", path: "/sold" },
                   { label: "Team", path: "/#team" },
                   { label: "About", path: "/#about" },
-                  { label: "Contact", path: "/#contact" },
+                  { label: "Contact", path: "pages/Contact" },
                 ].map((item, index) => (
                   <motion.div
                     key={item.label}

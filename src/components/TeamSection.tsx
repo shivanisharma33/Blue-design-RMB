@@ -1,19 +1,19 @@
 import { motion } from 'framer-motion';
 import TeamMember from './TeamMember';
-import christianImg from '@/assets/team-christian.jpg';
-import joImg from '@/assets/team-jo.jpg';
+import christianImg from '@/assets/team1.jpg';
+import joImg from '@/assets/team2.jpg';
 import michelleImg from '@/assets/team-michelle.jpg';
 
 const teamMembers = [
   {
-    name: 'Christian Marchetti',
-    phone: '0400 233 946',
+    name: 'Harsh kumar',
+    phone: '+61 450 909 063',
     email: 'christian@marchettigroup.com.au',
     image: christianImg,
   },
   {
-    name: 'Jo Arrowsmith',
-    phone: '03 9017 4848',
+    name: 'Abhishek Bhasin',
+    phone: '+61 450 909 063',
     email: 'accounts@marchettigroup.com.au',
     image: joImg,
   },

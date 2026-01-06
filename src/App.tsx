@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Index from "./pages/Index";
 import Listings from "./pages/Listings";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,7 +21,7 @@ const App = () => {
 
         <BrowserRouter>
           {/* GLOBAL NAVBAR */}
-         
+          <Navbar />
 
           <Routes>
             {/* HOME */}
@@ -28,7 +29,7 @@ const App = () => {
 
             {/* LISTINGS */}
             <Route path="pages/Listings" element={<Listings />} />
-
+      <Route path="pages/Contact" element={<Contact />} />
             {/* SOLD (TEMP PAGE) */}
             <Route
               path="/sold"
