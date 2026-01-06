@@ -1,57 +1,79 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import rmbLogo from "@/assets/rmb.png";
+import logo from "@/assets/logo.jpg";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
       {/* ================= NAVBAR ================= */}
       <motion.nav
-        className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-6"
+        className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-12 transition-all duration-500 ${
+          isScrolled
+            ? "bg-navy/95 backdrop-blur-md py-4 shadow-xl"
+            : "py-6"
+        }`}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5, ease: [0.19, 1, 0.22, 1] }}
       >
-        <div className="flex items-center justify-between">
-          
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+
           {/* LOGO */}
-          <Link to="/" className="flex items-center gap-4">
+          <Link to="/" className="flex items-center gap-4 group">
             <img
-              src={rmbLogo}
+              src={logo}
               alt="RMB Real Estate"
-              className="h-10 md:h-12 w-auto object-contain"
+              className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
           {/* NAV LINKS */}
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-6 md:gap-10">
             {/* BUY */}
             <Link
-              to="pages/Listings"
-              className="nav-link text-foreground hidden md:block hover:opacity-60 transition-opacity"
+              to="/listings"
+              className="nav-link text-white/90 hidden md:block hover:text-yellow transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-yellow after:transition-all after:duration-300 hover:after:w-full"
             >
               Buy
             </Link>
 
-            {/* SOLD */}
+            {/* SELL */}
             <Link
               to="/sold"
-              className="nav-link text-foreground hidden md:block hover:opacity-60 transition-opacity"
+              className="nav-link text-white/90 hidden md:block hover:text-yellow transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-yellow after:transition-all after:duration-300 hover:after:w-full"
             >
               Sell
+            </Link>
+
+            {/* CONTACT */}
+            <Link
+              to="/contact"
+              className="hidden lg:flex items-center gap-2 px-5 py-2.5 border border-yellow/50 text-yellow hover:bg-yellow hover:text-navy transition-all duration-300 label-text text-[10px] tracking-[0.15em]"
+            >
+              Contact
             </Link>
 
             {/* MENU BUTTON */}
             <button
               onClick={() => setIsMenuOpen(true)}
-              className="flex flex-col gap-1.5 p-2 group"
+              className="flex flex-col gap-1.5 p-2 group ml-2"
               aria-label="Open menu"
             >
-              <span className="w-6 h-px bg-foreground transition-transform duration-300 group-hover:scale-x-75 origin-right" />
-              <span className="w-6 h-px bg-foreground transition-transform duration-300 delay-75 group-hover:scale-x-75 origin-right" />
+              <span className="w-6 h-[1.5px] bg-yellow transition-all duration-300 group-hover:w-5 origin-right" />
+              <span className="w-6 h-[1.5px] bg-yellow transition-all duration-300 delay-75 group-hover:w-4 origin-right" />
             </button>
           </div>
         </div>
@@ -61,19 +83,25 @@ const Navbar = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-[100] bg-background"
+            className="fixed inset-0 z-[100] bg-navy"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.4 }}
           >
-            <div className="flex flex-col h-full px-6 md:px-12 py-6">
+            {/* Background decoration */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-yellow/5 rounded-full blur-[200px]" />
+              <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-orange/5 rounded-full blur-[150px]" />
+            </div>
+
+            <div className="relative flex flex-col h-full px-6 md:px-12 py-6">
 
               {/* MENU HEADER */}
               <div className="flex items-center justify-between">
-                <Link to="/" className="flex items-center gap-4">
+                <Link to="/" className="flex items-center gap-4" onClick={() => setIsMenuOpen(false)}>
                   <img
-                    src={rmbLogo}
+                    src={logo}
                     alt="RMB Real Estate"
                     className="h-10 md:h-12 w-auto object-contain"
                   />
@@ -81,11 +109,11 @@ const Navbar = () => {
 
                 <button
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-foreground p-2"
+                  className="text-white/80 p-2 hover:text-yellow transition-colors"
                   aria-label="Close menu"
                 >
                   <svg
-                    className="w-6 h-6"
+                    className="w-7 h-7"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -101,46 +129,58 @@ const Navbar = () => {
               </div>
 
               {/* MENU LINKS */}
-              <nav className="flex-1 flex flex-col justify-center items-center gap-8">
+              <nav className="flex-1 flex flex-col justify-center items-center gap-6 md:gap-8">
                 {[
-                  { label: "Buy", path: "pages/Listings" },
+                  { label: "Buy", path: "/listings" },
                   { label: "Sold", path: "/sold" },
-                  { label: "Team", path: "/#team" },
-                  { label: "About", path: "/#about" },
-                  { label: "Contact", path: "pages/Contact" },
+                  { label: "Team", path: "/team" },
+                  { label: "About", path: "/about" },
+                  { label: "Contact", path: "/contact" },
                 ].map((item, index) => (
                   <motion.div
                     key={item.label}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
                     transition={{
-                      duration: 0.6,
-                      delay: 0.1 + index * 0.1,
+                      duration: 0.5,
+                      delay: 0.05 + index * 0.08,
                       ease: [0.19, 1, 0.22, 1],
                     }}
+                    className="overflow-hidden"
                   >
                     <Link
                       to={item.path}
-                      className="text-4xl md:text-6xl font-light text-foreground hover:opacity-60 transition-opacity"
+                      className="block font-display text-4xl md:text-5xl lg:text-6xl font-light text-white hover:text-yellow transition-colors duration-300 relative group"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      {item.label}
+                      <span className="relative z-10">{item.label}</span>
+                      <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-yellow group-hover:w-full transition-all duration-500" />
                     </Link>
                   </motion.div>
                 ))}
               </nav>
 
               {/* FOOTER */}
-              <div className="text-center">
-                <motion.p
-                  className="text-sm text-muted-foreground"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                >
-                  03 9017 4848
-                </motion.p>
-              </div>
+              <motion.div
+                className="text-center space-y-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
+                <div className="flex items-center justify-center gap-6">
+                  <a href="tel:+61450909063" className="text-sm text-white/60 hover:text-yellow transition-colors">
+                    +61 450 909 063
+                  </a>
+                  <span className="text-orange/50">|</span>
+                  <a href="tel:+61430319912" className="text-sm text-white/60 hover:text-yellow transition-colors">
+                    +61 430 319 912
+                  </a>
+                </div>
+                <a href="mailto:ab@rmbrealestate.com.au" className="text-xs text-white/40 hover:text-yellow transition-colors block">
+                  ab@rmbrealestate.com.au
+                </a>
+              </motion.div>
             </div>
           </motion.div>
         )}

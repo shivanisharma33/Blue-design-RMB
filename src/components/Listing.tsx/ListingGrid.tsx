@@ -22,12 +22,12 @@ const ListingGrid = () => {
         {listings.map((item, i) => (
           <div
             key={i}
-            className={`relative bg-white/10 overflow-hidden ${
+            className={`relative bg-navy/10 overflow-hidden ${
               i < 3 ? "col-span-3 h-[420px]" : "h-[240px]"
             }`}
           >
             {/* IMAGE PLACEHOLDER */}
-            <div className="absolute inset-0 bg-neutral-700" />
+            <div className="absolute inset-0 bg-navy/50" />
 
             {/* TEXT OVERLAY */}
             <div className="absolute bottom-4 left-4">
@@ -35,7 +35,7 @@ const ListingGrid = () => {
                 {item.title}
               </p>
               {item.size && (
-                <p className="text-[11px] text-white/70 mt-1">
+                <p className="text-[11px] text-yellow/90 mt-1">
                   {item.size}
                 </p>
               )}

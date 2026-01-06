@@ -1,64 +1,84 @@
 import { ArrowUpRight, ArrowUp } from "lucide-react";
-import rmbLogo from "@/assets/rmb.png";
+import logo from "@/assets/logo.jpg";
 
 const Footer = () => {
   return (
-    <footer className="relative bg-black text-white px-10 pt-20 pb-10">
-      
+    <footer className="relative bg-[#1a1d4a] text-white px-6 md:px-10 pt-16 md:pt-20 pb-8 md:pb-10 border-t-2 border-yellow">
+
       {/* ================= TOP GRID ================= */}
-      <div className="grid grid-cols-12 gap-10 items-start">
-        
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start max-w-7xl mx-auto">
+
         {/* LEFT LOGO */}
-        <div className="col-span-4">
+        <div className="md:col-span-4" data-aos="fade-up" data-aos-delay="0">
           <img
-            src={rmbLogo}
+            src={logo}
             alt="RMB Real Estate"
-            className="h-14 w-auto object-contain"
+            className="h-12 md:h-14 w-auto object-contain"
           />
         </div>
 
         {/* CENTER CONTENT */}
-        <div className="col-span-4 text-sm leading-relaxed max-w-sm">
-          <p className="mb-6">
-            We’re people first and professionals second – which means no
+        <div className="md:col-span-4 max-w-sm" data-aos="fade-up" data-aos-delay="100">
+          <p className="text-sm md:text-base leading-relaxed mb-6 text-white/80 font-light tracking-wide">
+            We're people first and professionals second – which means no
             polyester suits, bad toupees or smooth-talking real estate nonsense.
           </p>
-          <p className="text-xs tracking-wide opacity-70">
-            110/95 Hazel Glen Drive, Doreen.
+          <p className="text-xs md:text-sm text-white/60 leading-relaxed tracking-wide">
+            Suite 616/101 Overton Road, Williams Landing, Melbourne, VIC 3027
+          </p>
+          <p className="text-xs md:text-sm text-white/60 mt-3 tracking-wide">
+            <a href="tel:+61450909063" className="hover:text-yellow transition-colors duration-300">+61 450 909 063</a>
+            <span className="mx-2 text-yellow/40">|</span>
+            <a href="tel:+61430319912" className="hover:text-yellow transition-colors duration-300">+61 430 319 912</a>
+          </p>
+          <p className="text-xs md:text-sm text-white/60 mt-2 tracking-wide">
+            <a href="mailto:ab@rmbrealestate.com.au" className="hover:text-yellow transition-colors duration-300">ab@rmbrealestate.com.au</a>
           </p>
 
           {/* SOCIAL ICONS */}
-          <div className="flex gap-6 mt-8 text-lg">
-            <a href="#" className="hover:opacity-70 transition">◎</a>
-            <a href="#" className="hover:opacity-70 transition">f</a>
-            <a href="#" className="hover:opacity-70 transition">in</a>
+          <div className="flex gap-5 mt-8">
+            <a
+              href="https://www.facebook.com/profile.php?id=100089779224370"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:border-yellow hover:text-yellow transition-all duration-300"
+              aria-label="Facebook"
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z" />
+              </svg>
+            </a>
           </div>
         </div>
 
-        {/* RIGHT NEWSLETTER */}
-        <div className="col-span-4 flex justify-end">
-          <div className="w-72">
-            <div className="flex items-center justify-between border-b border-white/40 pb-2 text-sm">
-              <span>Call for Inquiry</span>
-              <ArrowUpRight size={16} />
-            </div>
+        {/* RIGHT - CALL FOR INQUIRY */}
+        <div className="md:col-span-4 flex md:justify-end" data-aos="fade-up" data-aos-delay="200">
+          <div className="w-full md:w-72">
+            <a
+              href="tel:+61450909063"
+              className="flex items-center justify-between border-b border-yellow/50 pb-3 group cursor-pointer"
+            >
+              <span className="text-xs uppercase tracking-[0.2em] font-semibold text-yellow">Call for Inquiry</span>
+              <ArrowUpRight size={16} className="text-yellow transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
           </div>
         </div>
       </div>
 
       {/* ================= BOTTOM BAR ================= */}
-      <div className="border-t border-white/20 mt-16 pt-6 flex items-center justify-between text-xs">
-        <p className="opacity-60">
-          © Copyright 2025 RMB Real Estate. Design LBD STUDIOS.
+      <div className="border-t border-yellow/20 mt-14 md:mt-16 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 max-w-7xl mx-auto" data-aos="fade-up" data-aos-delay="300">
+        <p className="text-[11px] md:text-xs text-white/50 tracking-wide text-center md:text-left">
+          © Copyright {new Date().getFullYear()} RMB Real Estate. Design LBD STUDIOS.
         </p>
 
         {/* SCROLL TO TOP */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="hover:opacity-70 transition"
+          className="flex items-center gap-2 text-white/50 hover:text-yellow transition-colors duration-300 group"
           aria-label="Scroll to top"
         >
-          <ArrowUp size={18} />
+          <span className="text-[11px] uppercase tracking-wider">Top</span>
+          <ArrowUp size={16} className="group-hover:-translate-y-0.5 transition-transform duration-300" />
         </button>
       </div>
     </footer>

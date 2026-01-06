@@ -1,22 +1,16 @@
-import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-
-
+import AboutSection from '@/components/AboutSection';
 import FeaturesSection from '@/components/FeaturesSection';
 import TeamSection from '@/components/TeamSection';
-
 import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
-    <main className="bg-background min-h-screen">
-      <Navbar />
+    <main className="bg-background min-h-screen overflow-x-hidden">
       <Hero />
-    
-
+      <AboutSection />
       <FeaturesSection />
       <TeamSection />
- 
       <Footer />
     </main>
   );

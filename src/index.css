@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,35 +6,46 @@
 
 @layer base {
   :root {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    /* Navy Blue - slightly softer for eye comfort */
+    --navy: 236 42% 24%;
+    /* Yellow/Gold - warm and inviting */
+    --yellow: 44 92% 55%;
+    /* Orange/Red - softer accent */
+    --orange: 15 82% 56%;
+    /* Cream - for soft backgrounds */
+    --cream: 40 30% 96%;
+    /* Soft gray for subtle elements */
+    --soft-gray: 220 15% 92%;
 
-    --card: 0 0% 0%;
-    --card-foreground: 0 0% 100%;
+    --background: 40 20% 98%;
+    --foreground: 236 42% 22%;
 
-    --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 236 42% 22%;
 
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 236 42% 22%;
 
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 100%;
+    --primary: 236 42% 24%;
+    --primary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
+    --secondary: 44 92% 55%;
+    --secondary-foreground: 236 42% 22%;
 
-    --accent: 0 0% 20%;
+    --muted: 220 15% 94%;
+    --muted-foreground: 236 25% 50%;
+
+    --accent: 15 82% 56%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 0 0% 100%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 236 42% 24%;
 
-    --radius: 0rem;
+    --radius: 0.5rem;
   }
 }
 
@@ -45,14 +56,60 @@
 
   html {
     scroll-behavior: smooth;
+    font-size: 16px;
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    line-height: 1.7;
+    letter-spacing: 0.015em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-medium tracking-tight;
+    line-height: 1.15;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+
+  /* Paragraphs */
+  p {
+    @apply text-base md:text-lg leading-relaxed;
+    letter-spacing: 0.025em;
+    color: hsl(var(--foreground) / 0.85);
+  }
+
+  /* Links */
+  a {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  /* Selection */
   ::selection {
-    @apply bg-foreground text-background;
+    @apply bg-yellow/90 text-navy;
+  }
+
+  /* Smooth image rendering */
+  img {
+    image-rendering: -webkit-optimize-contrast;
   }
 }
 
@@ -61,23 +118,185 @@
     text-wrap: balance;
   }
 
+  /* Hero Typography */
   .hero-heading {
-    @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight leading-tight;
+    @apply font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight;
+    line-height: 1.08;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
   }
 
+  /* Section Typography */
   .section-heading {
-    @apply text-3xl md:text-4xl lg:text-5xl font-light tracking-tight leading-tight;
+    @apply font-display text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight;
+    line-height: 1.12;
   }
 
+  .section-subheading {
+    @apply font-sans text-lg md:text-xl lg:text-2xl font-light tracking-wide;
+    line-height: 1.5;
+    color: hsl(var(--foreground) / 0.7);
+  }
+
+  /* Body Typography */
   .body-text {
-    @apply text-base md:text-lg font-light leading-relaxed tracking-wide;
+    @apply font-sans text-base md:text-lg font-normal leading-relaxed;
+    letter-spacing: 0.02em;
+    color: hsl(var(--foreground) / 0.8);
   }
 
+  .body-text-sm {
+    @apply font-sans text-sm md:text-base font-normal leading-relaxed;
+    letter-spacing: 0.015em;
+  }
+
+  /* Label Typography */
+  .label-text {
+    @apply font-sans text-xs uppercase tracking-[0.18em] font-semibold;
+  }
+
+  /* Navigation */
   .nav-link {
-    @apply text-xs uppercase tracking-[0.2em] font-medium transition-opacity duration-300 hover:opacity-60;
+    @apply font-sans text-sm uppercase tracking-[0.15em] font-medium transition-all duration-300;
+  }
+
+  /* Quote/Accent Typography */
+  .quote-text {
+    @apply font-display text-xl md:text-2xl lg:text-3xl font-normal italic;
+    line-height: 1.5;
+    color: hsl(var(--foreground) / 0.75);
+  }
+
+  /* Caption Typography */
+  .caption-text {
+    @apply font-sans text-xs md:text-sm font-normal tracking-wide;
+    color: hsl(var(--foreground) / 0.6);
   }
 
   .scroll-indicator {
     @apply animate-bounce;
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    @apply backdrop-blur-md bg-white/10 border border-white/20;
+  }
+
+  /* Soft shadow for cards */
+  .soft-shadow {
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08),
+                0 2px 8px -2px rgba(0, 0, 0, 0.04);
+  }
+
+  .soft-shadow-lg {
+    box-shadow: 0 10px 40px -4px rgba(0, 0, 0, 0.1),
+                0 4px 16px -4px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--navy)) 0%, hsl(var(--orange)) 100%);
+  }
+
+  /* Smooth hover lift */
+  .hover-lift {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Image overlay gradient */
+  .image-overlay {
+    @apply relative overflow-hidden;
+  }
+
+  .image-overlay::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent opacity-0 transition-opacity duration-500;
+  }
+
+  .image-overlay:hover::after {
+    @apply opacity-100;
+  }
+
+  /* Premium Card Effects */
+  .card-premium {
+    @apply relative overflow-hidden;
+    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.98) 100%);
+  }
+
+  .card-premium::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+    transform: translateX(-100%);
+  }
+
+  .card-premium:hover::before {
+    @apply opacity-100;
+    animation: shimmer 1.5s ease-out;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  /* Smooth scrollbar hiding */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Premium badge glow */
+  .badge-glow {
+    box-shadow: 0 0 20px -4px currentColor;
+  }
+
+  /* Subtle pulse animation for featured items */
+  .pulse-subtle {
+    animation: pulse-subtle 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-subtle {
+    0%, 100% { box-shadow: 0 4px 24px -4px rgba(0,0,0,0.08); }
+    50% { box-shadow: 0 8px 32px -4px rgba(0,0,0,0.12); }
+  }
+
+  /* Focus ring for accessibility */
+  .focus-ring {
+    @apply outline-none ring-2 ring-orange/30 ring-offset-2;
+  }
+
+  /* Elegant line decoration */
+  .line-decoration {
+    @apply relative;
+  }
+
+  .line-decoration::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-12 h-0.5 bg-gradient-to-r from-yellow to-orange;
+  }
+
+  /* Text gradient animation */
+  .text-gradient-animate {
+    background: linear-gradient(90deg, hsl(var(--navy)), hsl(var(--orange)), hsl(var(--navy)));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-gradient 3s linear infinite;
+  }
+
+  @keyframes text-gradient {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
   }
 }

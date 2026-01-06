@@ -1,0 +1,562 @@
+import { motion } from 'framer-motion';
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { Link } from 'react-router-dom';
+import TeamSection from '@/components/TeamSection';
+
+/* ASSETS */
+import heroImg from "@/assets/contact.jpg";
+import officeImg from "@/assets/contact.jpg";
+import detailImg from "@/assets/contact.jpg";
+import lifestyleImg from "@/assets/contact.jpg";
+
+/* Animation variants */
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15, delayChildren: 0.2 }
+  }
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" as const } }
+};
+
+/* Stats data */
+const stats = [
+  { number: "15+", label: "Years Experience", description: "In the property market" },
+  { number: "500+", label: "Properties Sold", description: "Across Melbourne" },
+  { number: "98%", label: "Client Satisfaction", description: "5-star reviews" },
+  { number: "$2B+", label: "Total Sales", description: "Property value handled" },
+];
+
+/* Values data */
+const values = [
+  {
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+      </svg>
+    ),
+    title: "Expertise",
+    description: "Deep local market knowledge combined with modern strategic thinking to deliver exceptional results."
+  },
+  {
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+      </svg>
+    ),
+    title: "Integrity",
+    description: "We believe in transparent communication and honest advice that puts your interests first."
+  },
+  {
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+      </svg>
+    ),
+    title: "Relationships",
+    description: "Building lasting connections with clients through exceptional service and genuine care."
+  },
+  {
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+      </svg>
+    ),
+    title: "Innovation",
+    description: "Leveraging cutting-edge technology and creative marketing to showcase your property."
+  },
+];
+
+export default function About() {
+  return (
+    <div className="bg-navy text-white font-light overflow-hidden">
+
+      {/* ================= HEADER ================= */}
+      <Navbar />
+
+      {/* ================= HERO ================= */}
+      <section className="relative h-[100vh] w-full overflow-hidden">
+        <motion.img
+          src={heroImg}
+          alt="About Us"
+          className="absolute inset-0 w-full h-full object-cover"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5, ease: [0.19, 1, 0.22, 1] }}
+          style={{ filter: 'grayscale(40%) brightness(0.7)' }}
+        />
+
+        {/* Gradient overlays for depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/60 via-navy/30 to-navy" />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy/40 via-transparent to-navy/40" />
+
+        {/* Center Title */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+          <motion.span
+            className="label-text text-yellow/90 mb-6 tracking-[0.3em]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Our Story
+          </motion.span>
+          <motion.h1
+            className="hero-heading text-white mb-8 max-w-4xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4, ease: [0.19, 1, 0.22, 1] }}
+          >
+            Real Estate,{' '}
+            <span className="text-yellow">Reimagined</span>
+          </motion.h1>
+          {/* Animated keyword highlights */}
+          <motion.div
+            className="max-w-3xl text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <p className="section-subheading text-white/70 leading-relaxed">
+              A boutique real estate group built on
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 mt-4">
+              <motion.span
+                className="inline-flex items-center gap-2 px-4 py-2 border border-yellow/40 text-yellow font-medium tracking-wide text-sm md:text-base"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.9 }}
+                whileHover={{ borderColor: 'rgba(234, 179, 8, 0.8)', scale: 1.02 }}
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                </svg>
+                Relationships
+              </motion.span>
+              <motion.span
+                className="inline-flex items-center gap-2 px-4 py-2 border border-yellow/40 text-yellow font-medium tracking-wide text-sm md:text-base"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 1.1 }}
+                whileHover={{ borderColor: 'rgba(234, 179, 8, 0.8)', scale: 1.02 }}
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                </svg>
+                Integrity
+              </motion.span>
+              <motion.span
+                className="inline-flex items-center gap-2 px-4 py-2 border border-yellow/40 text-yellow font-medium tracking-wide text-sm md:text-base"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 1.3 }}
+                whileHover={{ borderColor: 'rgba(234, 179, 8, 0.8)', scale: 1.02 }}
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
+                </svg>
+                Innovation
+              </motion.span>
+            </div>
+            <motion.p
+              className="section-subheading text-orange mt-6 text-base md:text-lg"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1.5 }}
+            >
+              A fundamentally different way of thinking about property.
+            </motion.p>
+          </motion.div>
+
+          {/* Decorative scroll indicator */}
+          <motion.div
+            className="absolute bottom-12 left-1/2 -translate-x-1/2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
+          >
+            <motion.div
+              className="w-[1px] h-16 bg-gradient-to-b from-yellow/60 to-transparent"
+              animate={{ scaleY: [1, 0.6, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ================= STATS SECTION ================= */}
+      <section className="relative py-20 md:py-28 bg-gradient-to-b from-navy to-[#1a1d4a]">
+        {/* Subtle background glow */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute top-0 left-1/4 w-[600px] h-[400px] bg-yellow rounded-full blur-[200px]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <motion.div
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            {stats.map((stat) => (
+              <motion.div
+                key={stat.label}
+                className="text-center group"
+                variants={fadeInUp}
+              >
+                <div className="relative inline-block">
+                  <span className="font-display text-4xl md:text-5xl lg:text-6xl font-medium text-yellow group-hover:text-orange transition-colors duration-500">
+                    {stat.number}
+                  </span>
+                  <div className="absolute -bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-yellow/30 to-transparent" />
+                </div>
+                <h3 className="mt-4 text-white font-medium text-sm md:text-base tracking-wide">
+                  {stat.label}
+                </h3>
+                <p className="mt-1 text-white/50 text-xs md:text-sm">
+                  {stat.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ================= MAIN STORY SECTION ================= */}
+      <section className="relative py-24 md:py-36 bg-[#1a1d4a]">
+        {/* Background texture */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {/* Image */}
+            <motion.div
+              className="relative"
+              variants={scaleIn}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <div className="relative overflow-hidden">
+                <img
+                  src={officeImg}
+                  alt="Our Office"
+                  className="w-full aspect-[4/5] object-cover"
+                  style={{ filter: 'grayscale(30%) brightness(0.9)' }}
+                />
+                {/* Image overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-transparent" />
+              </div>
+              {/* Decorative frame */}
+              <div className="absolute -bottom-4 -right-4 w-full h-full border border-yellow/20 -z-10" />
+              <div className="absolute -top-4 -left-4 w-24 h-24 border-t border-l border-yellow/30" />
+            </motion.div>
+
+            {/* Content */}
+            <motion.div
+              className="lg:pl-8"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <motion.span
+                className="label-text text-yellow/70 tracking-[0.25em] mb-4 block"
+                variants={fadeInUp}
+              >
+                Our Philosophy
+              </motion.span>
+              <motion.h2
+                className="font-display text-3xl md:text-4xl lg:text-5xl font-medium mb-8 text-white leading-tight"
+                variants={fadeInUp}
+              >
+                We don't follow the{' '}
+                <span className="text-yellow">standard model</span>
+              </motion.h2>
+              <motion.div className="space-y-6" variants={fadeInUp}>
+                <p className="text-white/75 text-base md:text-lg leading-relaxed">
+                  Our approach to real estate is intentionally different. We believe
+                  the process should feel personal, strategic, and considered — not
+                  rushed or transactional.
+                </p>
+                <p className="text-white/75 text-base md:text-lg leading-relaxed">
+                  Every decision we make is guided by long-term value and genuine
+                  relationships. We're not here to close deals — we're here to build trust.
+                </p>
+              </motion.div>
+              <motion.div
+                className="mt-10 pt-8 border-t border-white/10"
+                variants={fadeInUp}
+              >
+                <p className="quote-text text-white/60 italic">
+                  "The best transactions are the ones where everyone walks away feeling valued."
+                </p>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= VALUES SECTION ================= */}
+      <section className="relative py-24 md:py-32 bg-gradient-to-b from-[#1a1d4a] via-navy to-navy">
+        {/* Background decorative */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-orange rounded-full blur-[200px]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          {/* Section Header */}
+          <motion.div
+            className="text-center mb-16 md:mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+          >
+            <span className="label-text text-yellow/70 tracking-[0.25em] mb-4 block">What Drives Us</span>
+            <h2 className="section-heading text-white mb-6">Our Core Values</h2>
+            <p className="section-subheading text-white/50 max-w-2xl mx-auto">
+              The principles that guide every interaction and decision we make.
+            </p>
+          </motion.div>
+
+          {/* Values Grid */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            {values.map((value) => (
+              <motion.div
+                key={value.title}
+                className="group relative p-8 bg-white/[0.02] border border-white/10 hover:border-yellow/30 hover:bg-white/[0.04] transition-all duration-500"
+                variants={fadeInUp}
+              >
+                {/* Icon */}
+                <div className="text-yellow/80 group-hover:text-yellow transition-colors duration-300 mb-6">
+                  {value.icon}
+                </div>
+                <h3 className="font-display text-xl font-medium text-white mb-3">
+                  {value.title}
+                </h3>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  {value.description}
+                </p>
+                {/* Corner accent */}
+                <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-yellow/0 group-hover:border-yellow/30 transition-colors duration-500" />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ================= FULL WIDTH STATEMENT ================= */}
+      <section className="relative py-32 md:py-40 bg-navy overflow-hidden">
+        {/* Large decorative text */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-[0.02] pointer-events-none">
+          <span className="font-display text-[20vw] font-bold text-white whitespace-nowrap">
+            DIFFERENT
+          </span>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-6 md:px-12 text-center relative">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
+          >
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-10 leading-tight">
+              Real estate, done{' '}
+              <span className="relative">
+                <span className="text-yellow">differently</span>
+                <motion.div
+                  className="absolute -bottom-2 left-0 right-0 h-[3px] bg-gradient-to-r from-yellow via-orange to-yellow"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                />
+              </span>
+            </h2>
+            <p className="text-white/70 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+              We work with buyers, sellers, and investors who value clarity,
+              confidence, and quality execution. From marketing to negotiation,
+              our focus remains on delivering outcomes that stand the test of time.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ================= IMAGE + TEXT ALTERNATING ================= */}
+      <section className="relative py-24 md:py-32 bg-gradient-to-b from-navy to-[#1a1d4a]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {/* Content */}
+            <motion.div
+              className="order-2 lg:order-1"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+            >
+              <span className="label-text text-yellow/70 tracking-[0.25em] mb-4 block">Our Approach</span>
+              <h2 className="font-display text-3xl md:text-4xl font-medium mb-8 text-white leading-tight">
+                People first.{' '}
+                <span className="text-yellow">Always.</span>
+              </h2>
+              <p className="text-white/75 text-base md:text-lg leading-relaxed mb-6">
+                Behind every property is a person, a family, or an investor with a
+                story. Understanding that story allows us to deliver advice that is
+                not only informed — but meaningful.
+              </p>
+              <p className="text-white/75 text-base md:text-lg leading-relaxed">
+                We take the time to listen, understand your goals, and craft a
+                strategy that aligns with your unique circumstances.
+              </p>
+            </motion.div>
+
+            {/* Image */}
+            <motion.div
+              className="order-1 lg:order-2 relative"
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+            >
+              <div className="relative overflow-hidden">
+                <img
+                  src={detailImg}
+                  alt="Detail"
+                  className="w-full aspect-[4/5] object-cover"
+                  style={{ filter: 'grayscale(30%) brightness(0.9)' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-l from-navy/30 via-transparent to-transparent" />
+              </div>
+              <div className="absolute -bottom-4 -left-4 w-full h-full border border-yellow/20 -z-10" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= SECOND ALTERNATING SECTION ================= */}
+      <section className="relative py-24 md:py-32 bg-[#1a1d4a]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {/* Image */}
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+            >
+              <div className="relative overflow-hidden">
+                <img
+                  src={lifestyleImg}
+                  alt="Lifestyle"
+                  className="w-full aspect-[4/5] object-cover"
+                  style={{ filter: 'grayscale(30%) brightness(0.9)' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-navy/30 via-transparent to-transparent" />
+              </div>
+              <div className="absolute -bottom-4 -right-4 w-full h-full border border-yellow/20 -z-10" />
+              <div className="absolute -top-4 -right-4 w-24 h-24 border-t border-r border-yellow/30" />
+            </motion.div>
+
+            {/* Content */}
+            <motion.div
+              className="lg:pl-8"
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+            >
+              <span className="label-text text-yellow/70 tracking-[0.25em] mb-4 block">Our Foundation</span>
+              <h2 className="font-display text-3xl md:text-4xl font-medium mb-8 text-white leading-tight">
+                Built on trust{' '}
+                <span className="text-yellow">& experience</span>
+              </h2>
+              <p className="text-white/75 text-base md:text-lg leading-relaxed mb-6">
+                Our team combines local market expertise with a modern, strategic
+                mindset. Whether buying, selling, or investing — we guide each step
+                with transparency and confidence.
+              </p>
+              <p className="text-white/75 text-base md:text-lg leading-relaxed">
+                Years of experience have taught us that the best results come from
+                patience, preparation, and an unwavering commitment to excellence.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= CTA ================= */}
+      <section className="relative py-32 md:py-40 bg-gradient-to-b from-[#1a1d4a] to-navy overflow-hidden">
+        {/* Background decorative */}
+        <div className="absolute inset-0 opacity-[0.04]">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-yellow rounded-full blur-[300px]" />
+        </div>
+
+        <div className="max-w-4xl mx-auto px-6 md:px-12 text-center relative">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+          >
+            <span className="label-text text-yellow/70 tracking-[0.25em] mb-6 block">Get Started</span>
+            <h2 className="section-heading text-white mb-8">
+              Let's work together
+            </h2>
+            <p className="section-subheading text-white/60 max-w-xl mx-auto mb-12">
+              If you're ready for a smarter, more considered approach to real
+              estate, we'd love to start a conversation.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-3 bg-yellow text-navy px-10 py-4 label-text hover:bg-orange hover:text-white transition-all duration-500"
+              >
+                Contact Us
+                <svg
+                  className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <Link
+                to="/listings"
+                className="inline-flex items-center gap-3 border border-white/30 text-white px-10 py-4 label-text hover:border-yellow hover:text-yellow transition-all duration-500"
+              >
+                View Listings
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ================= TEAM SECTION ================= */}
+      <TeamSection />
+
+      {/* ================= FOOTER ================= */}
+      <Footer />
+    </div>
+  );
+}
