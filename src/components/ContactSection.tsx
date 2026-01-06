@@ -27,10 +27,10 @@ const ContactSection = () => {
                 03 9017 4848
               </a>
               <a
-                href="mailto:hello@marchettigroup.com.au"
+                href="mailto:hello@rmb.com.au"
                 className="block text-lg text-muted-foreground hover:text-foreground transition-colors"
               >
-                hello@marchettigroup.com.au
+                hello@rmb.com.au
               </a>
             </div>
           </motion.div>
