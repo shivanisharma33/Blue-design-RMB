@@ -1,84 +1,79 @@
 import { motion } from "framer-motion";
-import aboutVideo from "@/assets/hero-videos.mp4";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, ease: [0.19, 1, 0.22, 1] }
+  }
+};
 
 const AboutSection = () => {
   return (
-    <section className="w-full bg-gradient-to-b from-navy via-navy to-[#1a1d4a] py-24 md:py-32 relative overflow-hidden">
+    <section className="relative w-full bg-[#0f122e] py-32 md:py-40 overflow-hidden">
 
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-yellow rounded-full blur-[150px]" />
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-orange rounded-full blur-[120px]" />
+      {/* ================= BACKGROUND ACCENTS ================= */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[-25%] left-1/2 -translate-x-1/2 w-[520px] h-[520px] bg-yellow/10 rounded-full blur-[220px]" />
+        <div className="absolute bottom-[-30%] left-1/2 -translate-x-1/2 w-[420px] h-[420px] bg-orange/10 rounded-full blur-[200px]" />
       </div>
 
-      {/* Section label */}
+      {/* ================= CONTENT ================= */}
       <motion.div
-        className="text-center mb-16"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        className="relative z-10 max-w-3xl mx-auto px-6 text-center"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
       >
-        <span className="label-text text-yellow/80 tracking-[0.25em]">About Us</span>
-      </motion.div>
+        {/* Label */}
+      <span className="block text-sm md:text-base font-medium uppercase tracking-[0.4em] text-yellow/80 mb-10">
+  About RMB
+</span>
 
-      {/* ================= VIDEO BLOCK ================= */}
-      <motion.div
-        className="max-w-5xl mx-auto px-6"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-      >
-        <div className="relative w-full aspect-[16/9] overflow-hidden rounded-sm shadow-2xl">
 
-          {/* Subtle border */}
-          <div className="absolute inset-0 border border-white/10 z-20 pointer-events-none rounded-sm" />
-
-          {/* Video */}
-          <video
-            className="absolute inset-0 w-full h-full object-cover"
-            src={aboutVideo}
-            autoPlay
-            loop
-            muted
-            playsInline
-          />
-
-          {/* Subtle overlay */}
-          <div className="absolute inset-0 bg-navy/20 z-10" />
-
-        </div>
-      </motion.div>
-
-      {/* ================= TEXT ================= */}
-      <motion.div
-        className="max-w-2xl mx-auto mt-16 md:mt-20 px-6 text-center"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
-      >
-        <h2 className="font-display text-2xl md:text-3xl text-white mb-6 font-medium">
-          People first, always.
+        {/* Heading */}
+        <h2 className="font-display text-4xl md:text-5xl text-white leading-tight mb-10">
+          A different way <br /> to do real estate.
         </h2>
-        <p className="text-base md:text-lg leading-relaxed text-white/70 font-light">
-          RMB Real Estate do real estate differently. We're people first and professionals
-          second — which means no polyester suits, bad toupees or smooth-talking nonsense.
-          We work for clients, rather than commissions. We value proper, long-term relationships.
-        </p>
-        <p className="text-base md:text-lg leading-relaxed text-white/70 font-light mt-4">
-          And we always deliver exceptional service. We use new tech. We grow through creativity.
+
+        {/* Body */}
+        <p className="text-lg text-white/70 font-light leading-relaxed">
+          RMB Real Estate was founded on a simple belief — people matter more than
+          transactions. We remove pressure, noise, and sales theatre from the
+          property experience.
         </p>
 
-        {/* Decorative line */}
+        <p className="text-lg text-white/70 font-light leading-relaxed mt-6">
+          We work for outcomes, not commissions. Every decision we make is guided
+          by clarity, trust, and long-term relationships.
+        </p>
+
+        <p className="text-lg text-white/70 font-light leading-relaxed mt-6">
+          Powered by modern technology and creativity, we deliver real estate
+          experiences that feel considered, honest, and genuinely exceptional.
+        </p>
+
+        {/* Divider */}
         <motion.div
-          className="w-16 h-[2px] bg-gradient-to-r from-yellow to-orange mx-auto mt-10"
+          className="w-24 h-[1px] bg-gradient-to-r from-yellow to-orange mx-auto mt-16"
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 1, delay: 0.3 }}
         />
+      </motion.div>
+
+      {/* ================= STATEMENT ================= */}
+      <motion.div
+        className="relative z-10 max-w-2xl mx-auto mt-24 px-6 text-center"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, delay: 0.2 }}
+      >
+      
       </motion.div>
 
     </section>

@@ -84,7 +84,7 @@ const FeatureCard = ({ title, subtitle, description, image, imageAlt, reverse = 
           {/* Hover overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-navy/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
 
-          <motion.img
+          <motion.img       
             src={image}
             alt={imageAlt}
             className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"

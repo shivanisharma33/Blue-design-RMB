@@ -168,9 +168,9 @@ const Listings = () => {
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-6 tracking-tight" data-aos="fade-up" data-aos-delay="200">
             Our Properties
           </h1>
-          <p className="text-lg md:text-xl text-orange opacity-80 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="300">
+          {/* <p className="text-lg md:text-xl text-orange opacity-80 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="300">
             Explore our curated collection of exceptional properties across Victoria's most sought-after locations
-          </p>
+          </p> */}
 
           {/* Scroll indicator */}
           <div className="mt-10 animate-bounce" data-aos="fade-up" data-aos-delay="500">

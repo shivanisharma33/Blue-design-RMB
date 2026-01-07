@@ -132,7 +132,7 @@ const Navbar = () => {
               <nav className="flex-1 flex flex-col justify-center items-center gap-6 md:gap-8">
                 {[
                   { label: "Buy", path: "/listings" },
-                  { label: "Sold", path: "/sold" },
+                  { label: "Sell", path: "/sold" },
                   { label: "Team", path: "/team" },
                   { label: "About", path: "/about" },
                   { label: "Contact", path: "/contact" },

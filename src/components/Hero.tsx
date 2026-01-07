@@ -50,14 +50,14 @@ const Hero = () => {
         style={{ opacity: contentOpacity, y: contentY }}
       >
         {/* Subtle tagline above */}
-        <motion.span
+        {/* <motion.span
           className="label-text text-yellow/90 mb-6 tracking-[0.25em]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
         >
           Premium Real Estate
-        </motion.span>
+        </motion.span> */}
 
         {/* Main heading */}
         <h1 className="hero-heading text-center text-white max-w-5xl">
@@ -81,14 +81,14 @@ const Hero = () => {
         </h1>
 
         {/* Subheading */}
-        <motion.p
+        {/* <motion.p
           className="mt-8 text-white/70 text-lg md:text-xl font-light max-w-xl text-center leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9, ease: [0.19, 1, 0.22, 1] }}
         >
           Real estate done differently — with integrity, expertise, and a personal touch.
-        </motion.p>
+        </motion.p> */}
 
         {/* CTA Button */}
         <motion.a
