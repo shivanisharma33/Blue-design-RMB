@@ -71,16 +71,7 @@ export default function Contact() {
           </p>
 
           {/* Scroll indicator */}
-          <div
-            className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group"
-            data-aos="fade-up"
-            data-aos-delay="800"
-          >
-            <span className="text-xs tracking-[0.3em] text-white/50 uppercase group-hover:text-yellow/70 transition-colors">
-              Scroll
-            </span>
-            <div className="w-px h-12 bg-gradient-to-b from-white/50 to-transparent animate-bounce-slow" />
-          </div>
+       
         </div>
       </section>
 

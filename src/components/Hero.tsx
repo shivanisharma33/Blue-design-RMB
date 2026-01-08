@@ -104,24 +104,7 @@ const Hero = () => {
         </motion.a>
       </motion.div>
 
-      {/* ================= SCROLL INDICATOR ================= */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.8 }}
-      >
-        <span className="label-text text-white/50 text-[10px] tracking-[0.2em]">
-          Scroll
-        </span>
-
-        <motion.div
-          className="w-[1px] h-12 bg-gradient-to-b from-yellow/80 to-transparent"
-          animate={{ scaleY: [0.5, 1, 0.5] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          style={{ originY: 0 }}
-        />
-      </motion.div>
+  
 
       {/* ================= DECORATIVE ELEMENTS ================= */}
       {/* Corner accents */}

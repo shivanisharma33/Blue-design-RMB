@@ -2,29 +2,22 @@ import { motion } from "framer-motion";
 import TeamMember from "./TeamMember";
 import christianImg from "@/assets/team1.jpg";
 import joImg from "@/assets/team2.jpg";
-import michelleImg from "@/assets/team-michelle.jpg";
 
 const teamMembers = [
-  {
-    name: "Harsh Kumar",
-    role: "Director",
-    phone: "+61 450 909 063",
-    email: "ab@rmbrealestate.com.au",
-    image: christianImg,
-  },
+ 
   {
     name: "Abhishek Bhasin",
-    role: "Sales Consultant",
+    role: "Director",
     phone: "+61 430 319 912",
     email: "ab@rmbrealestate.com.au",
     image: joImg,
   },
-  {
-    name: "Bavan Grewal",
-    role: "Gold Sponsor",
+   {
+    name: "Harsh Kumar",
+    role: "Sales Consultant",
     phone: "+61 450 909 063",
     email: "ab@rmbrealestate.com.au",
-    image: michelleImg,
+    image: christianImg,
   },
 ];
 
@@ -69,7 +62,7 @@ const TeamSection = ({ showHeading = true }: TeamSectionProps) => {
 
         {/* TEAM GRID (CENTERED) */}
         <div className="flex justify-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-14">
             {teamMembers.map((member, index) => (
               <TeamMember key={member.name} {...member} index={index} />
             ))}
@@ -89,7 +82,12 @@ const TeamSection = ({ showHeading = true }: TeamSectionProps) => {
             className="inline-flex items-center gap-3 px-10 py-4 border border-yellow/50 text-yellow hover:bg-yellow hover:text-navy transition-all duration-500 ease-out text-xs uppercase tracking-[0.2em]"
           >
             Get in Touch
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"

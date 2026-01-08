@@ -10,9 +10,11 @@ import "aos/dist/aos.css";
 import Navbar from "@/components/Navbar";
 import Index from "./pages/Index";
 import Listings from "./pages/Listings";
+import PropertyDetails from "./pages/PropertyDetails";
 import Sold from "./pages/Sold";
 import Team from "./pages/Team";
 import Contact from "./pages/Contact";
+
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 
@@ -45,9 +47,11 @@ const App = () => {
 
             {/* LISTINGS */}
             <Route path="/listings" element={<Listings />} />
+              <Route path="/property-details" element={<PropertyDetails />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/team" element={<Team />} />
             <Route path="/about" element={<About />} />
+         
             {/* SOLD */}
             <Route path="/sold" element={<Sold />} />
 
