@@ -1,5 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 interface FeatureCardProps {
   number: string;
@@ -18,59 +17,54 @@ const FeatureCard = ({
   image,
   reverse = false,
 }: FeatureCardProps) => {
-  const ref = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  const yImage = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-
   return (
     <div
-      ref={ref}
-      className={`grid md:grid-cols-2 gap-20 items-center ${
-        reverse ? "md:flex-row-reverse" : ""
+      className={`grid grid-cols-1 lg:grid-cols-2 gap-20 items-center ${
+        reverse ? "lg:flex-row-reverse" : ""
       }`}
     >
-      {/* TEXT */}
+      {/* ================= TEXT ================= */}
       <motion.div
-        initial={{ opacity: 0, x: reverse ? 60 : -60 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1 }}
-        className="relative"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
       >
-        <span className="absolute -top-24 text-[120px] font-bold text-white/5">
+        <span className="block text-yellow text-sm tracking-widest mb-4">
           {number}
         </span>
 
-        <span className="block text-sm tracking-[0.35em] uppercase text-yellow mb-6">
-          {subtitle}
-        </span>
-
-        <h3 className="text-4xl md:text-5xl font-light mb-8">
+        <h3 className="text-4xl md:text-5xl font-light text-black mb-4">
           {title}
         </h3>
 
-        <p className="text-lg text-white/70 leading-relaxed max-w-xl text-black">
+        {/* 🔒 EXPLICIT COLOR (FIXED FOR VERCEL) */}
+        <p className="text-lg font-medium text-gray-800 mb-6">
+          {subtitle}
+        </p>
+
+        {/* 🔒 EXPLICIT COLOR (FIXED FOR VERCEL) */}
+        <p className="text-base leading-relaxed text-gray-600 max-w-xl">
           {description}
         </p>
       </motion.div>
 
-      {/* IMAGE */}
+      {/* ================= IMAGE ================= */}
       <motion.div
-        style={{ y: yImage }}
-        className="relative h-[520px] rounded-3xl overflow-hidden"
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9, ease: [0.19, 1, 0.22, 1] }}
+        className="relative overflow-hidden rounded-3xl"
       >
         <img
           src={image}
           alt={title}
-          className="absolute inset-0 w-full h-full object-cover scale-110"
+          className="w-full h-full object-cover"
         />
 
-        {/* Glass Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+        {/* Soft overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
       </motion.div>
     </div>
   );
