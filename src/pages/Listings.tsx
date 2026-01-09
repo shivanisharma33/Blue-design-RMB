@@ -281,39 +281,61 @@ const Listings = () => {
               </div>
 
               {/* View Toggle - Enhanced */}
-              <div className="flex items-center gap-1 ml-auto bg-cream/50 p-1 rounded-xl">
-                <button
-                  onClick={() => setViewMode("grid")}
-                  className={`p-2.5 rounded-lg transition-all duration-300 ${
-                    viewMode === "grid"
-                      ? "bg-navy text-white shadow-md"
-                      : "text-navy/40 hover:text-navy hover:bg-white"
-                  }`}
-                  aria-label="Grid view"
-                >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
-                    <rect x="0" y="0" width="7" height="7" rx="1.5" />
-                    <rect x="9" y="0" width="7" height="7" rx="1.5" />
-                    <rect x="0" y="9" width="7" height="7" rx="1.5" />
-                    <rect x="9" y="9" width="7" height="7" rx="1.5" />
-                  </svg>
-                </button>
-                <button
-                  onClick={() => setViewMode("list")}
-                  className={`p-2.5 rounded-lg transition-all duration-300 ${
-                    viewMode === "list"
-                      ? "bg-navy text-white shadow-md"
-                      : "text-navy/40 hover:text-navy hover:bg-white"
-                  }`}
-                  aria-label="List view"
-                >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
-                    <rect x="0" y="0" width="16" height="3" rx="1" />
-                    <rect x="0" y="6.5" width="16" height="3" rx="1" />
-                    <rect x="0" y="13" width="16" height="3" rx="1" />
-                  </svg>
-                </button>
-              </div>
+          <div className="flex items-center gap-1 ml-auto bg-cream/50 p-1 rounded-xl shadow-sm">
+  {/* 🔍 Search Button */}
+  <button
+    onClick={() => setIsSearchOpen(true)} // optional
+    className="p-2.5 rounded-lg text-navy/40 hover:text-navy hover:bg-white transition-all duration-300"
+    aria-label="Search"
+  >
+    <svg
+      className="w-4 h-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <circle cx="11" cy="11" r="7" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </svg>
+  </button>
+
+  {/* ⬛ Grid View */}
+  <button
+    onClick={() => setViewMode("grid")}
+    className={`p-2.5 rounded-lg transition-all duration-300 ${
+      viewMode === "grid"
+        ? "bg-navy text-white shadow-md"
+        : "text-navy/40 hover:text-navy hover:bg-white"
+    }`}
+    aria-label="Grid view"
+  >
+    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
+      <rect x="0" y="0" width="7" height="7" rx="1.5" />
+      <rect x="9" y="0" width="7" height="7" rx="1.5" />
+      <rect x="0" y="9" width="7" height="7" rx="1.5" />
+      <rect x="9" y="9" width="7" height="7" rx="1.5" />
+    </svg>
+  </button>
+
+  {/* ☰ List View */}
+  <button
+    onClick={() => setViewMode("list")}
+    className={`p-2.5 rounded-lg transition-all duration-300 ${
+      viewMode === "list"
+        ? "bg-navy text-white shadow-md"
+        : "text-navy/40 hover:text-navy hover:bg-white"
+    }`}
+    aria-label="List view"
+  >
+    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
+      <rect x="0" y="0" width="16" height="3" rx="1" />
+      <rect x="0" y="6.5" width="16" height="3" rx="1" />
+      <rect x="0" y="13" width="16" height="3" rx="1" />
+    </svg>
+  </button>
+</div>
+
             </div>
           </div>
         </div>
@@ -803,6 +825,7 @@ const ListingCardHorizontal = ({
               </svg>
               <span className="text-sm font-medium text-navy">{size}</span>
             </div>
+            
           </div>
         </div>
 

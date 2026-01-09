@@ -1,98 +1,78 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 interface FeatureCardProps {
+  number: string;
   title: string;
-  subtitle?: string;
+  subtitle: string;
   description: string;
   image: string;
-  imageAlt: string;
   reverse?: boolean;
-  index?: number;
 }
 
-const FeatureCard = ({ title, subtitle, description, image, imageAlt, reverse = false, index = 0 }: FeatureCardProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+const FeatureCard = ({
+  number,
+  title,
+  subtitle,
+  description,
+  image,
+  reverse = false,
+}: FeatureCardProps) => {
+  const ref = useRef(null);
+
   const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start'],
+    target: ref,
+    offset: ["start end", "end start"],
   });
 
-  const imageY = useTransform(scrollYProgress, [0, 1], ['8%', '-8%']);
-  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.08, 1, 1.08]);
+  const yImage = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
-    <motion.div
-      ref={containerRef}
-      className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center py-12 md:py-20 border-b border-foreground/5 last:border-b-0`}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
+    <div
+      ref={ref}
+      className={`grid md:grid-cols-2 gap-20 items-center ${
+        reverse ? "md:flex-row-reverse" : ""
+      }`}
     >
-      {/* Text Content */}
+      {/* TEXT */}
       <motion.div
-        className={`space-y-5 ${reverse ? 'lg:order-2' : ''}`}
-        initial={{ opacity: 0, x: reverse ? 30 : -30 }}
+        initial={{ opacity: 0, x: reverse ? 60 : -60 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
+        transition={{ duration: 1 }}
+        className="relative"
       >
-        {/* Number indicator */}
-        <div className="flex items-center gap-4 mb-2">
-          <span className="text-5xl md:text-6xl font-display font-light text-foreground/10">
-            0{index + 1}
-          </span>
-          {subtitle && (
-            <span className="label-text text-orange tracking-[0.2em]">
-              {subtitle}
-            </span>
-          )}
-        </div>
+        <span className="absolute -top-24 text-[120px] font-bold text-white/5">
+          {number}
+        </span>
 
-        <h3 className="font-display text-2xl md:text-3xl lg:text-4xl font-medium text-foreground leading-tight">
+        <span className="block text-sm tracking-[0.35em] uppercase text-yellow mb-6">
+          {subtitle}
+        </span>
+
+        <h3 className="text-4xl md:text-5xl font-light mb-8">
           {title}
         </h3>
 
-        <p className="body-text text-foreground/70 leading-relaxed">
+        <p className="text-lg text-white/70 leading-relaxed max-w-xl text-black">
           {description}
         </p>
-
-        {/* Decorative element */}
-        <motion.div
-          className="w-12 h-[2px] bg-gradient-to-r from-orange to-yellow mt-6"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          style={{ originX: 0 }}
-        />
       </motion.div>
 
-      {/* Image */}
+      {/* IMAGE */}
       <motion.div
-        className={`overflow-hidden aspect-[4/3] rounded-sm shadow-lg group ${reverse ? 'lg:order-1' : ''}`}
-        initial={{ opacity: 0, x: reverse ? -30 : 30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.3, ease: [0.19, 1, 0.22, 1] }}
+        style={{ y: yImage }}
+        className="relative h-[520px] rounded-3xl overflow-hidden"
       >
-        <div className="relative w-full h-full overflow-hidden">
-          {/* Subtle border overlay */}
-          <div className="absolute inset-0 border border-foreground/5 z-10 pointer-events-none rounded-sm" />
+        <img
+          src={image}
+          alt={title}
+          className="absolute inset-0 w-full h-full object-cover scale-110"
+        />
 
-          {/* Hover overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-navy/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-
-          <motion.img       
-            src={image}
-            alt={imageAlt}
-            className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
-            style={{ y: imageY, scale: imageScale }}
-          />
-        </div>
+        {/* Glass Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 

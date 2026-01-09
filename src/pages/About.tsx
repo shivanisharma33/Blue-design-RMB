@@ -85,113 +85,136 @@ export default function About() {
       <Navbar />
 
       {/* ================= HERO ================= */}
-      <section className="relative h-[100vh] w-full overflow-hidden">
-        <motion.img
-          src={heroImg}
-          alt="About Us"
-          className="absolute inset-0 w-full h-full object-cover"
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: [0.19, 1, 0.22, 1] }}
-          style={{ filter: 'grayscale(40%) brightness(0.7)' }}
-        />
+    {/* ================= ENHANCED HERO ================= */}
+<section className="relative h-[100vh] w-full overflow-hidden bg-navy">
 
-        {/* Gradient overlays for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/60 via-navy/30 to-navy" />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy/40 via-transparent to-navy/40" />
+  {/* Background Image */}
+  <motion.img
+    src={heroImg}
+    alt="About Us"
+    className="absolute inset-0 w-full h-full object-cover"
+    initial={{ scale: 1.15 }}
+    animate={{ scale: 1 }}
+    transition={{ duration: 2, ease: [0.19, 1, 0.22, 1] }}
+    style={{ filter: "grayscale(35%) brightness(0.65)" }}
+  />
 
-        {/* Center Title */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-          <motion.span
-            className="label-text text-yellow/90 mb-6 tracking-[0.3em]"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Our Story
-          </motion.span>
-          <motion.h1
-            className="hero-heading text-white mb-8 max-w-4xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4, ease: [0.19, 1, 0.22, 1] }}
-          >
-            Real Estate,{' '}
-            <span className="text-yellow">Reimagined</span>
-          </motion.h1>
-          {/* Animated keyword highlights */}
-          <motion.div
-            className="max-w-3xl text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <p className="section-subheading text-white/70 leading-relaxed">
-              A boutique real estate group built on
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 mt-4">
-              <motion.span
-                className="inline-flex items-center gap-2 px-4 py-2 border border-yellow/40 text-yellow font-medium tracking-wide text-sm md:text-base"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.9 }}
-                whileHover={{ borderColor: 'rgba(234, 179, 8, 0.8)', scale: 1.02 }}
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
-                </svg>
-                Relationships
-              </motion.span>
-              <motion.span
-                className="inline-flex items-center gap-2 px-4 py-2 border border-yellow/40 text-yellow font-medium tracking-wide text-sm md:text-base"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.1 }}
-                whileHover={{ borderColor: 'rgba(234, 179, 8, 0.8)', scale: 1.02 }}
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                </svg>
-                Integrity
-              </motion.span>
-              <motion.span
-                className="inline-flex items-center gap-2 px-4 py-2 border border-yellow/40 text-yellow font-medium tracking-wide text-sm md:text-base"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 1.3 }}
-                whileHover={{ borderColor: 'rgba(234, 179, 8, 0.8)', scale: 1.02 }}
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
-                </svg>
-                Innovation
-              </motion.span>
-            </div>
-            <motion.p
-              className="section-subheading text-orange mt-6 text-base md:text-lg"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1.5 }}
-            >
-              A fundamentally different way of thinking about property.
-            </motion.p>
-          </motion.div>
+  {/* Animated Gradient Light */}
+  <motion.div
+    className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(234,179,8,0.15),transparent_40%)]"
+    animate={{ opacity: [0.3, 0.6, 0.3] }}
+    transition={{ duration: 8, repeat: Infinity }}
+  />
 
-          {/* Decorative scroll indicator */}
-          <motion.div
-            className="absolute bottom-12 left-1/2 -translate-x-1/2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-          >
-            <motion.div
-              className="w-[1px] h-16 bg-gradient-to-b from-yellow/60 to-transparent"
-              animate={{ scaleY: [1, 0.6, 1] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </motion.div>
-        </div>
-      </section>
+  {/* Dark Depth Overlays */}
+  <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/40 to-navy" />
+  <div className="absolute inset-0 bg-gradient-to-r from-navy/60 via-transparent to-navy/60" />
+
+  {/* Noise / Grain Overlay */}
+  <div className="absolute inset-0 opacity-[0.06] bg-[url('/noise.png')] pointer-events-none" />
+
+  {/* ================= CONTENT ================= */}
+  <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
+
+    {/* Eyebrow */}
+    <motion.span
+      className="text-yellow/80 tracking-[0.35em] uppercase text-xs md:text-sm mb-6"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      Our Story
+    </motion.span>
+
+    {/* Headline */}
+    <motion.h1
+      className="text-white text-[clamp(2.8rem,6vw,5.5rem)] font-light leading-[1.05] max-w-5xl"
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
+    >
+      Real Estate,
+      <span className="relative inline-block mx-3 font-semibold text-yellow">
+        Reimagined
+        <span className="absolute inset-x-0 -bottom-2 h-[2px] bg-yellow/70 blur-sm" />
+      </span>
+    </motion.h1>
+
+    {/* Sub Copy */}
+    <motion.p
+      className="mt-8 text-white/80 text-base md:text-lg max-w-2xl"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.6 }}
+    >
+      A boutique real estate group built on trust, intelligence, and
+      forward-thinking property strategy.
+    </motion.p>
+
+    {/* Glass Keywords */}
+    <motion.div
+      className="mt-10 flex flex-wrap justify-center gap-4"
+      initial="hidden"
+      animate="visible"
+      variants={{
+        visible: {
+          transition: { staggerChildren: 0.15 }
+        }
+      }}
+    >
+      {["Relationships", "Integrity", "Innovation"].map((item) => (
+        <motion.div
+          key={item}
+          className="px-5 py-3 rounded-xl backdrop-blur-xl bg-white/10 border border-white/15 text-yellow text-sm md:text-base tracking-wide cursor-default"
+          whileHover={{
+            scale: 1.06,
+            backgroundColor: "rgba(255,255,255,0.16)"
+          }}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0 }
+          }}
+        >
+          {item}
+        </motion.div>
+      ))}
+    </motion.div>
+
+    {/* Floating Stats */}
+    <motion.div
+      className="absolute right-10 bottom-32 hidden lg:flex flex-col gap-4"
+      initial={{ opacity: 0, x: 40 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 1 }}
+    >
+      {[
+        { label: "Years Experience", value: "12+" },
+        { label: "Properties Sold", value: "1.4k" },
+      ].map((stat) => (
+        <motion.div
+          key={stat.label}
+          className="w-44 p-4 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/15"
+          animate={{ y: [0, -6, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <p className="text-yellow text-2xl font-semibold">{stat.value}</p>
+          <p className="text-white/70 text-xs mt-1">{stat.label}</p>
+        </motion.div>
+      ))}
+    </motion.div>
+
+    {/* Scroll Indicator */}
+    <motion.div
+      className="absolute bottom-10"
+      animate={{ opacity: [0.4, 1, 0.4] }}
+      transition={{ duration: 2, repeat: Infinity }}
+    >
+      <div className="w-[1px] h-20 bg-gradient-to-b from-yellow to-transparent" />
+    </motion.div>
+
+  </div>
+</section>
+
 
       {/* ================= STATS SECTION ================= */}
       <section className="relative py-20 md:py-28 bg-gradient-to-b from-navy to-[#1a1d4a]">
