@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import TeamMember from "./TeamMember";
 import christianImg from "@/assets/team1.jpg";
 import joImg from "@/assets/team2.jpg";
+import { Link } from "react-router-dom";
 
 const teamMembers = [
  
@@ -70,33 +71,38 @@ const TeamSection = ({ showHeading = true }: TeamSectionProps) => {
         </div>
 
         {/* CTA */}
-        <motion.div
-          className="text-center mt-20 md:mt-24"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-3 px-10 py-4 border border-yellow/50 text-yellow hover:bg-yellow hover:text-navy transition-all duration-500 ease-out text-xs uppercase tracking-[0.2em]"
-          >
-            Get in Touch
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </a>
-        </motion.div>
+      <motion.div
+  className="text-center mt-20 md:mt-24"
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6, delay: 0.3 }}
+>
+  <Link
+    to="/contact"
+    className="inline-flex items-center gap-3 px-10 py-4 
+               border border-yellow/50 text-yellow 
+               hover:bg-yellow hover:text-navy 
+               transition-all duration-500 ease-out 
+               text-xs uppercase tracking-[0.2em]"
+  >
+    Get in Touch
+    <svg
+      className="w-4 h-4"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M17 8l4 4m0 0l-4 4m4-4H3"
+      />
+    </svg>
+  </Link>
+</motion.div>
+
 
       </div>
     </section>
