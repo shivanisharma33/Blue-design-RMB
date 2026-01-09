@@ -159,6 +159,8 @@
     @apply font-sans text-sm uppercase tracking-[0.15em] font-medium transition-all duration-300;
   }
 
+  
+
   /* Quote/Accent Typography */
   .quote-text {
     @apply font-display text-xl md:text-2xl lg:text-3xl font-normal italic;

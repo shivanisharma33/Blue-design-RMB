@@ -1,6 +1,6 @@
 import { useState } from "react";
 import hero from "@/assets/contact.jpg";
-import horse from "@/assets/Horses.jpg";
+import horse from "@/assets/RMB realestate (7).jpg";
 import logo from "@/assets/logo.jpg";
 import Footer from "@/components/Footer";
 

@@ -6,9 +6,9 @@ import TeamSection from '@/components/TeamSection';
 
 /* ASSETS */
 import heroImg from "@/assets/contact.jpg";
-import officeImg from "@/assets/contact.jpg";
-import detailImg from "@/assets/contact.jpg";
-import lifestyleImg from "@/assets/contact.jpg";
+import officeImg from "@/assets/RMB realestate (4).jpg";
+import detailImg from "@/assets/RMB realestate (5).jpg";
+import lifestyleImg from "@/assets/RMB realestate (6).jpg";
 
 /* Animation variants */
 const fadeInUp = {
