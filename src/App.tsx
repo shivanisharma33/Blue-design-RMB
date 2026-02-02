@@ -14,6 +14,7 @@ import PropertyDetails from "./pages/PropertyDetails";
 import Sold from "./pages/Sold";
 import Team from "./pages/Team";
 import Contact from "./pages/Contact";
+import Lease from "./pages/Lease";
 
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
@@ -54,6 +55,7 @@ const App = () => {
          
             {/* SOLD */}
             <Route path="/sold" element={<Sold />} />
+             <Route path="/lease" element={<Lease />} />
 
           </Routes>
         </BrowserRouter>

@@ -13,13 +13,7 @@ const teamMembers = [
     email: "ab@rmbrealestate.com.au",
     image: joImg,
   },
-   {
-    name: "Harsh Kumar",
-    role: "Sales Consultant",
-    phone: "+61 450 909 063",
-    email: "ab@rmbrealestate.com.au",
-    image: christianImg,
-  },
+   
 ];
 
 interface TeamSectionProps {
@@ -63,7 +57,7 @@ const TeamSection = ({ showHeading = true }: TeamSectionProps) => {
 
         {/* TEAM GRID (CENTERED) */}
         <div className="flex justify-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-14">
+          <div className="grid grid-cols-2 sm:grid-cols-1 gap-10 md:gap-14">
             {teamMembers.map((member, index) => (
               <TeamMember key={member.name} {...member} index={index} />
             ))}

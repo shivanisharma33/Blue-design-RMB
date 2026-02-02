@@ -6,7 +6,7 @@ import TeamSection from '@/components/TeamSection';
 
 /* ASSETS */
 import heroImg from "@/assets/contact.jpg";
-import officeImg from "@/assets/RMB realestate (4).jpg";
+import officeImg from "@/assets/team2.jpg";
 import detailImg from "@/assets/RMB realestate (5).jpg";
 import lifestyleImg from "@/assets/RMB realestate (6).jpg";
 
@@ -29,13 +29,6 @@ const scaleIn = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" as const } }
 };
 
-/* Stats data */
-const stats = [
-  { number: "15+", label: "Years Experience", description: "In the property market" },
-  { number: "500+", label: "Properties Sold", description: "Across Melbourne" },
-  { number: "98%", label: "Client Satisfaction", description: "5-star reviews" },
-  { number: "$2B+", label: "Total Sales", description: "Property value handled" },
-];
 
 /* Values data */
 const values = [
@@ -180,28 +173,7 @@ export default function About() {
       ))}
     </motion.div>
 
-    {/* Floating Stats */}
-    <motion.div
-      className="absolute right-10 bottom-32 hidden lg:flex flex-col gap-4"
-      initial={{ opacity: 0, x: 40 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: 1 }}
-    >
-      {[
-        { label: "Years Experience", value: "12+" },
-        { label: "Properties Sold", value: "1.4k" },
-      ].map((stat) => (
-        <motion.div
-          key={stat.label}
-          className="w-44 p-4 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/15"
-          animate={{ y: [0, -6, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <p className="text-yellow text-2xl font-semibold">{stat.value}</p>
-          <p className="text-white/70 text-xs mt-1">{stat.label}</p>
-        </motion.div>
-      ))}
-    </motion.div>
+
 
     {/* Scroll Indicator */}
     <motion.div
@@ -216,44 +188,6 @@ export default function About() {
 </section>
 
 
-      {/* ================= STATS SECTION ================= */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-b from-navy to-[#1a1d4a]">
-        {/* Subtle background glow */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="absolute top-0 left-1/4 w-[600px] h-[400px] bg-yellow rounded-full blur-[200px]" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <motion.div
-            className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            {stats.map((stat) => (
-              <motion.div
-                key={stat.label}
-                className="text-center group"
-                variants={fadeInUp}
-              >
-                <div className="relative inline-block">
-                  <span className="font-display text-4xl md:text-5xl lg:text-6xl font-medium text-yellow group-hover:text-orange transition-colors duration-500">
-                    {stat.number}
-                  </span>
-                  <div className="absolute -bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-yellow/30 to-transparent" />
-                </div>
-                <h3 className="mt-4 text-white font-medium text-sm md:text-base tracking-wide">
-                  {stat.label}
-                </h3>
-                <p className="mt-1 text-white/50 text-xs md:text-sm">
-                  {stat.description}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
       {/* ================= MAIN STORY SECTION ================= */}
       <section className="relative py-24 md:py-36 bg-[#1a1d4a]">

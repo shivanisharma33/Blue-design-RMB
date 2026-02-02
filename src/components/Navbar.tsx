@@ -72,6 +72,12 @@ const Navbar = () => {
             >
               Contact
             </Link>
+               <Link
+              to="/lease"
+              className="nav-link text-white/90 hidden md:block hover:text-yellow transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-yellow after:transition-all after:duration-300 hover:after:w-full"
+            >
+              Lease
+            </Link>
 
             {/* MENU BUTTON */}
             <button

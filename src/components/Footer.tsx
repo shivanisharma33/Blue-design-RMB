@@ -31,12 +31,10 @@ const Footer = () => {
         {/* CENTER CONTENT */}
         <div className="md:col-span-4 max-w-sm" data-aos="fade-up" data-aos-delay="100">
           <p className="text-sm md:text-base leading-relaxed mb-6 text-white/80 font-light tracking-wide">
-            We're people first and professionals second – which means no
-            polyester suits, bad toupees or smooth-talking real estate nonsense.
-          </p>
+           Ready to take the next step in your real estate journey? Whether you're looking for your dream home or ready to sell, our team is here to help. Reach out to RMB Real Estate today and experience the fresh, modern approach to real estate that you deserve. </p>
 
           <p className="text-xs md:text-sm text-white/60 leading-relaxed tracking-wide">
-            Suite 616/101 Overton Road, Williams Landing, Melbourne, VIC 3027
+            Suite 618/101 Overton Road, Williams Landing, Melbourne, VIC 3027
           </p>
 
           <p className="text-xs md:text-sm text-white/60 mt-3 tracking-wide">

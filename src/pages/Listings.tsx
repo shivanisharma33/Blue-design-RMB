@@ -46,7 +46,7 @@ const COUNT_OPTIONS = [
   { label: "6+", value: 6 },
 ];
 
-const PROPERTY_TYPES = ["All Properties", "House", "Apartment", "Land", "Rural"];
+const PROPERTY_TYPES = ["All Properties", "Homes", "Apartment", "Land", "Rural"];
 
 /* ================= PROPERTY IMAGES (Unsplash - Free to use) ================= */
 
