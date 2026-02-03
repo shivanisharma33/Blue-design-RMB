@@ -11,26 +11,26 @@ import interiorImg from "@/assets/RMB realestate 2.jpg";
 const features = [
   {
     number: "01",
-    title: "Local market advantage",
-    subtitle: "Melbourne Expertise",
+    title: "Fresh approach to real estate",
+    subtitle: "Tailored to You",
     description:
-      "Based in Melbourne, RMB Real Estate has a deep understanding of local suburbs, buyer demand, and pricing trends. From family homes to growth-focused investments, we know how to position properties for the right audience and strong results.",
+      "The days of one-size-fits-all real estate solutions are over. RMB Real Estate offers a tailored approach that prioritizes your unique needs and goals, ensuring every strategy is designed specifically around what matters most to you.",
     image: locationImg,
   },
   {
     number: "02",
-    title: "Built for buyers & investors",
-    subtitle: "Smart Property Choices",
+    title: "Cutting-edge technology",
+    subtitle: "Modern Digital Advantage",
     description:
-      "We work closely with homeowners, first-time buyers, and property investors to identify opportunities that align with lifestyle needs and long-term value. Our approach is practical, transparent, and driven by real market insight.",
+      "We leverage the latest digital tools and platforms to give you a competitive edge. From virtual tours and 3D floor plans to data-driven digital marketing, we make sure your property stands out and gets the visibility it deserves.",
     image: horseImg,
   },
   {
     number: "03",
-    title: "Professional. Personal. Proven.",
-    subtitle: "Five-Star Service",
+    title: "Personal service, proven expertise",
+    subtitle: "People-First Experience",
     description:
-      "At RMB Real Estate, every client receives a polished and professional experience. We combine modern marketing tools, technology-driven processes, and genuine customer care to ensure smooth transactions and trusted relationships.",
+      "Exceptional service is at the heart of what we do. Our experienced team combines modern technology with high-touch, personalized service, offering hands-on guidance and trusted support throughout your entire real estate journey.",
     image: interiorImg,
   },
 ];

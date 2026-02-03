@@ -43,9 +43,9 @@ const Hero = () => {
             ease: [0.19, 1, 0.22, 1],
           }}
         >
-          <span className="block">Human expertise.</span>
+          <span className="block">Your Home.</span>
           <span className="block text-yellow/95 mt-2">
-            Zero agents.
+            Our Priority.
           </span>
         </motion.h1>
 
