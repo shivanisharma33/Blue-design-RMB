@@ -1,123 +1,146 @@
-import { ArrowUpRight, ArrowUp } from "lucide-react";
+import {
+  ArrowUpRight,
+  ArrowUp,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.jpg";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
 
-  const handleInquiry = (e) => {
+  const handleInquiry = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
 
-    window.location.href = `mailto:ab@rmbrealestate.com.au?subject=Inquiry from Website&body=My email is: ${email}`;
+    window.location.href = `mailto:ab@rmbrealestate.com.au?subject=New Inquiry from Website&body=My email is: ${email}`;
     setEmail("");
   };
 
   return (
-    <footer className="relative bg-[#1a1d4a] text-white px-6 md:px-10 pt-16 md:pt-20 pb-8 md:pb-10 border-t-2 border-yellow">
+    <footer className="relative bg-gradient-to-br from-[#0f1235] via-[#1a1d4a] to-[#0c0f2e] text-white">
 
-      {/* ================= TOP GRID ================= */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start max-w-7xl mx-auto">
+      {/* ================= CTA STRIP ================= */}
+      <div className="border-b border-yellow/20">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-14 flex flex-col md:flex-row items-center justify-between gap-6">
+          <h3 className="text-2xl md:text-3xl font-light tracking-wide max-w-xl">
+            Let’s build your next real estate success together.
+          </h3>
 
-        {/* LEFT LOGO */}
-        <div className="md:col-span-4" data-aos="fade-up">
-          <img
-            src={logo}
-            alt="RMB Real Estate"
-            className="h-12 md:h-14 w-auto object-contain"
-          />
-        </div>
-
-        {/* CENTER CONTENT */}
-        <div className="md:col-span-4 max-w-sm" data-aos="fade-up" data-aos-delay="100">
-          <p className="text-sm md:text-base leading-relaxed mb-6 text-white/80 font-light tracking-wide">
-           Ready to take the next step in your real estate journey? Whether you're looking for your dream home or ready to sell, our team is here to help. Reach out to RMB Real Estate today and experience the fresh, modern approach to real estate that you deserve. </p>
-
-          <p className="text-xs md:text-sm text-white/60 leading-relaxed tracking-wide">
-            Suite 618/101 Overton Road, Williams Landing, Melbourne, VIC 3027
-          </p>
-
-          <p className="text-xs md:text-sm text-white/60 mt-3 tracking-wide">
-            <a href="tel:+61450909063" className="hover:text-yellow transition">
-              +61 450 909 063
-            </a>
-            <span className="mx-2 text-yellow/40">|</span>
-            <a href="tel:+61430319912" className="hover:text-yellow transition">
-              +61 430 319 912
-            </a>
-          </p>
-
-          <p className="text-xs md:text-sm text-white/60 mt-2 tracking-wide">
-            <a
-              href="mailto:ab@rmbrealestate.com.au"
-              className="hover:text-yellow transition"
-            >
-              ab@rmbrealestate.com.au
-            </a>
-          </p>
-
-          {/* SOCIAL ICON */}
-          <div className="flex gap-5 mt-8">
-            <a
-              href="https://www.facebook.com/profile.php?id=100089779224370"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:border-yellow hover:text-yellow transition-all duration-300"
-              aria-label="Facebook"
-            >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        {/* RIGHT - INLINE CALL FOR INQUIRY INPUT */}
-        <div className="md:col-span-4 flex md:justify-end" data-aos="fade-up" data-aos-delay="200">
           <form
             onSubmit={handleInquiry}
-            className="w-full md:w-72 flex items-center gap-3 border-b border-yellow/50 pb-3"
+            className="flex items-center gap-4 border-b border-yellow pb-2"
           >
             <input
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Call for inquiry"
-              className="flex-1 bg-transparent text-xs uppercase tracking-[0.2em] text-yellow placeholder:text-yellow/40 outline-none"
+              placeholder="Your email"
+              className="bg-transparent text-sm uppercase tracking-[0.25em] text-yellow placeholder:text-yellow/40 outline-none"
             />
-
             <button type="submit">
               <ArrowUpRight
-                size={16}
-                className="text-yellow transition-transform duration-300 hover:translate-x-0.5 hover:-translate-y-0.5"
+                size={18}
+                className="text-yellow hover:translate-x-0.5 hover:-translate-y-0.5 transition"
               />
             </button>
           </form>
         </div>
       </div>
 
-      {/* ================= BOTTOM BAR ================= */}
-      <div
-        className="border-t border-yellow/20 mt-14 md:mt-16 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 max-w-7xl mx-auto"
-        data-aos="fade-up"
-        data-aos-delay="300"
-      >
-        <p className="text-[11px] md:text-xs text-white/50 tracking-wide text-center md:text-left">
-          © {new Date().getFullYear()} RMB Real Estate. Design LBD STUDIOS.
-        </p>
+      {/* ================= MAIN FOOTER ================= */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 grid grid-cols-1 md:grid-cols-12 gap-12">
 
-        {/* SCROLL TO TOP */}
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-2 text-white/50 hover:text-yellow transition group"
-        >
-          <span className="text-[11px] uppercase tracking-wider">Top</span>
-          <ArrowUp
-            size={16}
-            className="group-hover:-translate-y-0.5 transition-transform"
-          />
-        </button>
+        {/* BRAND */}
+        <div className="md:col-span-4 space-y-6">
+          <img src={logo} alt="RMB Real Estate" className="h-14 w-auto" />
+          <p className="text-sm text-white/70 leading-relaxed max-w-sm">
+            RMB Real Estate delivers a refined, transparent and
+            results-driven approach to buying, selling and managing
+            premium properties across Melbourne.
+          </p>
+        </div>
+
+        {/* COMPANY LINKS */}
+        <div className="md:col-span-2">
+          <h4 className="text-xs uppercase tracking-[0.3em] text-yellow mb-6">
+            Company
+          </h4>
+          <ul className="space-y-3 text-sm text-white/70">
+            <li><Link to="/" className="hover:text-yellow transition">Home</Link></li>
+            <li><Link to="/AboutSection" className="hover:text-yellow transition">About Us</Link></li>
+            <li><Link to="/Team" className="hover:text-yellow transition">Team</Link></li>
+            <li><Link to="/contact" className="hover:text-yellow transition">Contact</Link></li>
+          </ul>
+        </div>
+
+        {/* PROPERTY LINKS */}
+        <div className="md:col-span-3">
+          <h4 className="text-xs uppercase tracking-[0.3em] text-yellow mb-6">
+            Property
+          </h4>
+          <ul className="space-y-3 text-sm text-white/70">
+            <li><Link to="/listings" className="hover:text-yellow transition">Buy</Link></li>
+            <li><Link to="/sold" className="hover:text-yellow transition">Sell</Link></li>
+            <li><Link to="/lease" className="hover:text-yellow transition">Rent</Link></li>
+           
+          </ul>
+        </div>
+
+        {/* CONTACT */}
+        <div className="md:col-span-3 space-y-5">
+          <h4 className="text-xs uppercase tracking-[0.3em] text-yellow">
+            Contact
+          </h4>
+
+          <div className="flex items-start gap-3 text-sm text-white/70">
+            <MapPin size={16} className="text-yellow mt-0.5" />
+            <span>
+              Suite 618/101 Overton Road,<br />
+              Williams Landing, Melbourne VIC 3027
+            </span>
+          </div>
+
+          <div className="flex items-center gap-3 text-sm">
+            <Phone size={16} className="text-yellow" />
+            <a href="tel:+61450909063" className="hover:text-yellow transition">
+              +61 450 909 063
+            </a>
+          </div>
+
+          <div className="flex items-center gap-3 text-sm">
+            <Mail size={16} className="text-yellow" />
+            <a
+              href="mailto:ab@rmbrealestate.com.au"
+              className="hover:text-yellow transition"
+            >
+              ab@rmbrealestate.com.au
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* ================= BOTTOM BAR ================= */}
+      <div className="border-t border-yellow/20">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-[11px] tracking-wide text-white/50">
+            © {new Date().getFullYear()} RMB Real Estate · Designed by LBD Studios
+          </p>
+
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="flex items-center gap-2 text-white/50 hover:text-yellow transition"
+          >
+            <span className="text-[11px] uppercase tracking-widest">
+              Back to top
+            </span>
+            <ArrowUp size={16} />
+          </button>
+        </div>
       </div>
     </footer>
   );
