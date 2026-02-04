@@ -77,6 +77,6 @@ const Hero = () => {
       <div className="absolute bottom-8 right-8 w-16 h-16 border-r border-b border-white/10 z-20" />
     </section>
   );
-};
+};          
 
 export default Hero;
