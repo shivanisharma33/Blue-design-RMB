@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import heroVideo from "@/assets/Untitled design (2).mp4";
+import heroVideo from "@/assets/rmb hero bg video.mp4";
 
 const Hero = () => {
   return (
