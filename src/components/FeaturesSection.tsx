@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import FeatureCard from "./FeatureCard";
 
-import locationImg from "@/assets/RMB realestate after.jpg";
+import locationImg from "@/assets/RMB realestate (8).jpg";
 import horseImg from "@/assets/RMB-Final.jpg";
 import interiorImg from "@/assets/RMB realestate 2.jpg";
 

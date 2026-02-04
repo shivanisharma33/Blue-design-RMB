@@ -150,6 +150,7 @@ const Navbar = () => {
                   { label: "Team", path: "/team" },
                   { label: "About", path: "/about" },
                   { label: "Contact", path: "/contact" },
+                      { label: "Lease", path: "/lease" },
                 ].map((item, index) => (
                   <motion.div
                     key={item.label}
